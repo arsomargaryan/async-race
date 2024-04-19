@@ -10,9 +10,16 @@ interface Props {
   setCars: React.Dispatch<ICars[]>;
   page: number;
   setTotalCarsCount: React.Dispatch<React.SetStateAction<number | null>>;
+  updateId: number | null;
 }
 
-function ActionsBar({ cars, setCars, page, setTotalCarsCount }: Props) {
+function ActionsBar({
+  cars,
+  setCars,
+  page,
+  setTotalCarsCount,
+  updateId
+}: Props) {
   return (
     <div
       className="flex justify-between items-center"
@@ -28,7 +35,12 @@ function ActionsBar({ cars, setCars, page, setTotalCarsCount }: Props) {
         setCars={setCars}
         setTotalCarsCount={setTotalCarsCount}
       />
-      <UpdateCar />
+      <UpdateCar
+        page={page}
+        setCars={setCars}
+        setTotalCarsCount={setTotalCarsCount}
+        updateId={updateId}
+      />
       <GenerateCars
         page={page}
         setCars={setCars}

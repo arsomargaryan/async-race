@@ -44,6 +44,7 @@ function CreateCar({ page, setCars, setTotalCarsCount }: Props) {
           });
         });
       setName('');
+      inputRef.current.value = '';
     } catch (error) {
       console.log(error);
     }

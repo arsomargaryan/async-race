@@ -13,6 +13,7 @@ function App() {
   const [cars, setCars] = useState<ICars[]>([]);
   const [totalCarsCount, setTotalCarsCount] = useState<number | null>(null);
   const [page, setPage] = useState<number>(1);
+  const [updateId, setUpdateId] = useState<number | null>(null);
 
   useEffect(() => {
     try {
@@ -34,6 +35,7 @@ function App() {
         setCars={setCars}
         page={page}
         setTotalCarsCount={setTotalCarsCount}
+        updateId={updateId}
       />
       <Routes>
         <Route
@@ -46,10 +48,10 @@ function App() {
               setTotalCarsCount={setTotalCarsCount}
               page={page}
               setPage={setPage}
+              setUpdateId={setUpdateId}
             />
           }
         />
-        {'}'} /{'>'}
         <Route path="/winners" element={<WinnersPage />} />
       </Routes>
     </div>

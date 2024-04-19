@@ -7,8 +7,15 @@ interface Props {
   setCars: React.Dispatch<ICars[]>;
   setTotalCarsCount: React.Dispatch<React.SetStateAction<number | null>>;
   page: number;
+  setUpdateId: React.Dispatch<React.SetStateAction<number | null>>;
 }
-function CarsList({ cars, setCars, page, setTotalCarsCount }: Props) {
+function CarsList({
+  cars,
+  setCars,
+  page,
+  setTotalCarsCount,
+  setUpdateId
+}: Props) {
   return (
     <div>
       {cars.map(car => (
@@ -18,6 +25,7 @@ function CarsList({ cars, setCars, page, setTotalCarsCount }: Props) {
           setCars={setCars}
           setTotalCarsCount={setTotalCarsCount}
           page={page}
+          setUpdateId={setUpdateId}
         />
       ))}
     </div>

@@ -1,24 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+// eslint-disable-next-line import/no-duplicates
+import GaragePage from './pages/GaragePage';
+// eslint-disable-next-line import/no-duplicates
+import WinnersPage from './pages/GaragePage';
+import Header from './components/Header';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Alter <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="mx-auto container">
+      <Header />
+      <Routes>
+        <Route path="/" element={<GaragePage />} />
+        <Route path="/winners" element={<WinnersPage />} />
+      </Routes>
     </div>
   );
 }

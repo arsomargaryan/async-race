@@ -29,7 +29,12 @@ function App() {
   return (
     <div className="mx-auto container">
       <Header />
-      <ActionsBar />
+      <ActionsBar
+        cars={cars}
+        setCars={setCars}
+        page={page}
+        setTotalCarsCount={setTotalCarsCount}
+      />
       <Routes>
         <Route
           path="/"

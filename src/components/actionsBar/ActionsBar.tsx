@@ -3,8 +3,16 @@ import CarsRace from './CarsRace';
 import CreateCar from './CreateCar';
 import UpdateCar from './UpdateCar';
 import GenerateCars from './GenerateCars';
+import { ICars } from '../../interfaces/ICars';
 
-function ActionsBar() {
+interface Props {
+  cars: ICars[];
+  setCars: React.Dispatch<ICars[]>;
+  page: number;
+  setTotalCarsCount: React.Dispatch<React.SetStateAction<number | null>>;
+}
+
+function ActionsBar({ cars, setCars, page, setTotalCarsCount }: Props) {
   return (
     <div
       className="flex justify-between items-center"
@@ -17,7 +25,11 @@ function ActionsBar() {
       <CarsRace />
       <CreateCar />
       <UpdateCar />
-      <GenerateCars />
+      <GenerateCars
+        page={page}
+        setCars={setCars}
+        setTotalCarsCount={setTotalCarsCount}
+      />
     </div>
   );
 }

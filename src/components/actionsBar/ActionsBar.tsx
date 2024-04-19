@@ -23,7 +23,11 @@ function ActionsBar({ cars, setCars, page, setTotalCarsCount }: Props) {
       }}
     >
       <CarsRace />
-      <CreateCar />
+      <CreateCar
+        page={page}
+        setCars={setCars}
+        setTotalCarsCount={setTotalCarsCount}
+      />
       <UpdateCar />
       <GenerateCars
         page={page}

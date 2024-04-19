@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface Props {
   carCount: number;
@@ -7,7 +7,11 @@ interface Props {
 }
 
 function Pagination({ carCount, page, setPage }: Props) {
-  const [pageCount] = useState<number>(Math.ceil(carCount / 7));
+  const [pageCount, setPageCount] = useState<number>(Math.ceil(carCount / 7));
+
+  useEffect(() => {
+    setPageCount(Math.ceil(carCount / 7));
+  }, [carCount]);
 
   const nextPage = (): void => {
     setPage(prev => prev + 1);

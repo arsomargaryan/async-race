@@ -11,6 +11,7 @@ interface Props {
   carCount: number | null;
   page: number;
   setUpdateId: React.Dispatch<React.SetStateAction<number | null>>;
+  isRaceAll: boolean;
 }
 
 function GaragePage({
@@ -20,7 +21,8 @@ function GaragePage({
   setTotalCarsCount,
   page,
   setPage,
-  setUpdateId
+  setUpdateId,
+  isRaceAll
 }: Props) {
   return (
     <div>
@@ -30,6 +32,7 @@ function GaragePage({
         setTotalCarsCount={setTotalCarsCount}
         page={page}
         setUpdateId={setUpdateId}
+        isRaceAll={isRaceAll}
       />
       {carCount && (
         <Pagination carCount={carCount} page={page} setPage={setPage} />

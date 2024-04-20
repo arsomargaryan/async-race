@@ -1,24 +1,26 @@
 import React from 'react';
-import CarsRace from './CarsRace';
-import CreateCar from './CreateCar';
-import UpdateCar from './UpdateCar';
-import GenerateCars from './GenerateCars';
+import CarsRace from './__partials/CarsRace';
+import CreateCar from './__partials/CreateCar';
+import UpdateCar from './__partials/UpdateCar';
+import GenerateCars from './__partials/GenerateCars';
 import { ICars } from '../../interfaces/ICars';
 
 interface Props {
-  cars: ICars[];
   setCars: React.Dispatch<ICars[]>;
   page: number;
   setTotalCarsCount: React.Dispatch<React.SetStateAction<number | null>>;
   updateId: number | null;
+  isRaceAll: boolean;
+  setIsRaceAll: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function ActionsBar({
-  cars,
   setCars,
   page,
   setTotalCarsCount,
-  updateId
+  updateId,
+  isRaceAll,
+  setIsRaceAll
 }: Props) {
   return (
     <div
@@ -29,7 +31,7 @@ function ActionsBar({
         alignItems: 'center'
       }}
     >
-      <CarsRace />
+      <CarsRace isRaceAll={isRaceAll} setIsRaceAll={setIsRaceAll} />
       <CreateCar
         page={page}
         setCars={setCars}

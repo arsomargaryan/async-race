@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-// eslint-disable-next-line import/no-duplicates
 import GaragePage from './pages/GaragePage';
-// eslint-disable-next-line import/no-duplicates
 import WinnersPage from './pages/WinnersPage';
 import Header from './components/Header';
-import ActionsBar from './components/actionsBar/ActionsBar';
+import ActionsBar from './components/ActionsBar';
 import { ICars } from './interfaces/ICars';
 import { getCars } from './api';
 
@@ -14,6 +12,7 @@ function App() {
   const [totalCarsCount, setTotalCarsCount] = useState<number | null>(null);
   const [page, setPage] = useState<number>(1);
   const [updateId, setUpdateId] = useState<number | null>(null);
+  const [isRaceAll, setIsRaceAll] = useState(false);
 
   useEffect(() => {
     try {
@@ -31,11 +30,12 @@ function App() {
     <div className="mx-auto container">
       <Header />
       <ActionsBar
-        cars={cars}
         setCars={setCars}
         page={page}
         setTotalCarsCount={setTotalCarsCount}
         updateId={updateId}
+        isRaceAll={isRaceAll}
+        setIsRaceAll={setIsRaceAll}
       />
       <Routes>
         <Route
@@ -49,6 +49,7 @@ function App() {
               page={page}
               setPage={setPage}
               setUpdateId={setUpdateId}
+              isRaceAll={isRaceAll}
             />
           }
         />

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { ICars } from '../interfaces/ICars';
-import { getCars } from '../api';
+import { ICars } from '../../../interfaces/ICars';
+import { getCars } from '../../../api';
 
 interface Props {
   id: number;
@@ -10,7 +10,7 @@ interface Props {
   page: number;
   setUpdateId: React.Dispatch<React.SetStateAction<number | null>>;
 }
-function CarItemFunc({
+function CarItemActions({
   id,
   setCars,
   setTotalCarsCount,
@@ -50,4 +50,4 @@ function CarItemFunc({
   );
 }
 
-export default CarItemFunc;
+export default CarItemActions;

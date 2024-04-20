@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { ICars } from '../interfaces/ICars';
-import Car from './Car';
-import CarItemFunc from './CarItemFunc';
-import CarStartStop from './CarStartStop';
-import { IEngineStart } from '../interfaces/IEngineStart';
+import { ICars } from '../../interfaces/ICars';
+import CarIcon from './__partials/CarIcon';
+import CarItemActions from './__partials/CarItemActions';
+import CarStartStop from './__partials/CarStartStop';
+import { IEngineStart } from '../../interfaces/IEngineStart';
 
 interface Props {
   car: ICars;
@@ -11,13 +11,15 @@ interface Props {
   setTotalCarsCount: React.Dispatch<React.SetStateAction<number | null>>;
   page: number;
   setUpdateId: React.Dispatch<React.SetStateAction<number | null>>;
+  isRaceAll: boolean;
 }
 function CarItem({
   car,
   setCars,
   setTotalCarsCount,
   page,
-  setUpdateId
+  setUpdateId,
+  isRaceAll
 }: Props) {
   const [engineState, setEngineState] = useState<IEngineStart | null>(null);
   const [isDrive, setIsDrive] = useState<boolean>(false);
@@ -26,14 +28,14 @@ function CarItem({
   return (
     <div
       className="flex gap-2 items-center m-2"
-      style={{
-        display: 'flex',
-        gap: '2px',
-        alignItems: 'center',
-        margin: '5px'
-      }}
+      // style={{
+      //   display: 'flex',
+      //   gap: '2px',
+      //   alignItems: 'center',
+      //   margin: '5px'
+      // }}
     >
-      <CarItemFunc
+      <CarItemActions
         id={car.id}
         setCars={setCars}
         setTotalCarsCount={setTotalCarsCount}
@@ -45,8 +47,9 @@ function CarItem({
         setEngineState={setEngineState}
         setIsDrive={setIsDrive}
         setIsBroke={setIsBroke}
+        isRaceAll={isRaceAll}
       />
-      <Car
+      <CarIcon
         mark={car.name}
         color={car.color}
         engineState={engineState}

@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { IEngineStart } from '../interfaces/IEngineStart';
+import React, { useEffect, useRef, useState, CSSProperties } from 'react';
+import { IEngineStart } from '../../../interfaces/IEngineStart';
 
 interface Props {
   mark: string;
@@ -8,10 +8,10 @@ interface Props {
   engineState: IEngineStart | null;
   isBroke: boolean;
 }
-function Car({ mark, color, isDrive, engineState, isBroke }: Props) {
+function CarIcon({ mark, color, isDrive, engineState, isBroke }: Props) {
   const [speed, setSpeed] = useState<string>('');
   const [screenSize, setScreenSize] = useState<string>('');
-  const carRef = useRef(null);
+  const carRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     setSpeed(`${(engineState?.distance / engineState?.velocity).toFixed(2)}ms`);
@@ -19,7 +19,7 @@ function Car({ mark, color, isDrive, engineState, isBroke }: Props) {
   }, [engineState]);
 
   useEffect(() => {
-    if (!isBroke) return;
+    if (!isBroke || !carRef.current) return;
     carRef.current.style.animationPlayState = 'paused';
   }, [isBroke]);
 
@@ -27,12 +27,14 @@ function Car({ mark, color, isDrive, engineState, isBroke }: Props) {
     <>
       <i
         className={`fa-solid fa-car-side text-4xl ${isDrive ? 'carAnimation' : ''}`}
-        style={{
-          color,
-          fontSize: '30px',
-          '--animation-duration': speed,
-          '--screen-size': screenSize
-        }}
+        style={
+          {
+            color,
+            fontSize: '30px',
+            '--animation-duration': speed,
+            '--screen-size': screenSize
+          } as CSSProperties
+        }
         ref={carRef}
       />
       <span
@@ -45,4 +47,4 @@ function Car({ mark, color, isDrive, engineState, isBroke }: Props) {
   );
 }
 
-export default Car;
+export default CarIcon;

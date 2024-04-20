@@ -1,13 +1,14 @@
 import React, { useRef, useState } from 'react';
 import axios from 'axios';
-import { ICars } from '../../interfaces/ICars';
-import { getCars } from '../../api';
+import { ICars } from '../../../interfaces/ICars';
+import { getCars } from '../../../api';
 
 interface Props {
   setCars: React.Dispatch<ICars[]>;
   setTotalCarsCount: React.Dispatch<React.SetStateAction<number | null>>;
   page: number;
 }
+
 function CreateCar({ page, setCars, setTotalCarsCount }: Props) {
   const [color, setColor] = useState<string>('#00000');
   const [name, setName] = useState<string>('');

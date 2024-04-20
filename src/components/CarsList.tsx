@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CarItem from './CarItem';
 import { ICars } from '../interfaces/ICars';
 
@@ -8,13 +8,15 @@ interface Props {
   setTotalCarsCount: React.Dispatch<React.SetStateAction<number | null>>;
   page: number;
   setUpdateId: React.Dispatch<React.SetStateAction<number | null>>;
+  isRaceAll: boolean;
 }
 function CarsList({
   cars,
   setCars,
   page,
   setTotalCarsCount,
-  setUpdateId
+  setUpdateId,
+  isRaceAll
 }: Props) {
   return (
     <div>
@@ -26,6 +28,7 @@ function CarsList({
           setTotalCarsCount={setTotalCarsCount}
           page={page}
           setUpdateId={setUpdateId}
+          isRaceAll={isRaceAll}
         />
       ))}
     </div>

@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import { firstPartName, secondPartName } from '../../constants/RandomNames';
-import { ICars } from '../../interfaces/ICars';
-import { getCars } from '../../api';
+import { firstPartName, secondPartName } from '../../../constants/random-names';
+import { ICars } from '../../../interfaces/ICars';
+import { getCars } from '../../../api';
 
 interface Props {
   page: number;
@@ -23,7 +23,7 @@ function GenerateCars({ page, setCars, setTotalCarsCount }: Props) {
   };
 
   const carGenerate = () => {
-    for (let i: number = 0; i < 100; i++) {
+    for (let i: number = 0; i < 100; i += 1) {
       const name: string = `${firstPartName[randomNumber()]} ${secondPartName[randomNumber()]}`;
       const color = randomColor();
 

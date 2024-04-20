@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.carAnimation{
+    transform: translateX(0);
+    animation: raceAnimation var(--animation-duration) ease-in-out forwards;
+
+}
+
+@keyframes raceAnimation {
+    0%{
+        transform: translateX(0);
+    }
+
+     100%{
+        transform: translateX(var(--screen-size));
+    }
+
+}

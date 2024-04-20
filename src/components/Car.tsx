@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { IEngineStart } from '../interfaces/IEngineStart';
 
 interface Props {
@@ -6,15 +6,22 @@ interface Props {
   color: string;
   isDrive: boolean;
   engineState: IEngineStart | null;
+  isBroke: boolean;
 }
-function Car({ mark, color, isDrive, engineState }: Props) {
+function Car({ mark, color, isDrive, engineState, isBroke }: Props) {
   const [speed, setSpeed] = useState<string>('');
   const [screenSize, setScreenSize] = useState<string>('');
+  const carRef = useRef(null);
 
   useEffect(() => {
-    setSpeed(`${Math.ceil(engineState?.distance / engineState?.velocity)}ms`);
+    setSpeed(`${(engineState?.distance / engineState?.velocity).toFixed(2)}ms`);
     setScreenSize(`${window.innerWidth - 180}px`);
   }, [engineState]);
+
+  useEffect(() => {
+    if (!isBroke) return;
+    carRef.current.style.animationPlayState = 'paused';
+  }, [isBroke]);
 
   return (
     <>
@@ -26,6 +33,7 @@ function Car({ mark, color, isDrive, engineState }: Props) {
           '--animation-duration': speed,
           '--screen-size': screenSize
         }}
+        ref={carRef}
       />
       <span
         className="opacity-15 text-xl ml-2"

@@ -21,6 +21,8 @@ function CarItem({
 }: Props) {
   const [engineState, setEngineState] = useState<IEngineStart | null>(null);
   const [isDrive, setIsDrive] = useState<boolean>(false);
+  const [isBroke, setIsBroke] = useState<boolean>(false);
+
   return (
     <div
       className="flex gap-2 items-center m-2"
@@ -42,12 +44,14 @@ function CarItem({
         id={car.id}
         setEngineState={setEngineState}
         setIsDrive={setIsDrive}
+        setIsBroke={setIsBroke}
       />
       <Car
         mark={car.name}
         color={car.color}
         engineState={engineState}
         isDrive={isDrive}
+        isBroke={isBroke}
       />
     </div>
   );

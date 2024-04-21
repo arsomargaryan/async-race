@@ -20,8 +20,8 @@ function App() {
         setCars(data.data);
         setTotalCarsCount(data.headers['x-total-count']);
       });
-    } catch (error) {
-      console.log(error);
+    } catch {
+      /* empty */
     }
   }, [page]);
 

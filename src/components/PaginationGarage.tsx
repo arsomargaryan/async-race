@@ -27,17 +27,21 @@ function PaginationGarage({ carCount, page, setPage }: Props) {
     <div className="flex justify-between m-10 text-xl">
       <div className="shadow-2xl">Garage ({carCount})</div>
       <div>
-        <i
-          className="fa-solid fa-arrow-left cursor-pointer mr-1"
-          style={{ cursor: 'pointer' }}
-          onClick={prevPage}
-        />
+        <button type="button" onClick={prevPage}>
+          <i
+            aria-label="arrow-left"
+            className="fa-solid fa-arrow-left cursor-pointer mr-1"
+            style={{ cursor: 'pointer' }}
+          />
+        </button>
         Page {page}
-        <i
-          className="fa-solid fa-arrow-right cursor-pointer ml-1"
-          style={{ cursor: 'pointer' }}
-          onClick={nextPage}
-        />
+        <button type="button" onClick={nextPage}>
+          <i
+            aria-label="arrow-right"
+            className="fa-solid fa-arrow-right cursor-pointer ml-1"
+            style={{ cursor: 'pointer' }}
+          />
+        </button>
       </div>
     </div>
   );

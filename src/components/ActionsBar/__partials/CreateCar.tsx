@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import axios from 'axios';
 import { ICars } from '../../../interfaces/ICars';
 import { getCars } from '../../../api';
+import Api from '../../../constants/api';
 
 interface Props {
   setCars: React.Dispatch<ICars[]>;
@@ -19,7 +20,7 @@ function CreateCar({ page, setCars, setTotalCarsCount }: Props) {
     try {
       axios
         .post(
-          'http://127.0.0.1:3000/garage/',
+          `${Api.HOST_URL}/garage/`,
           {
             name,
             color
@@ -40,7 +41,7 @@ function CreateCar({ page, setCars, setTotalCarsCount }: Props) {
       setName('');
       inputRef.current.value = '';
     } catch (error) {
-      console.log(error);
+      /* empty */
     }
   };
 
@@ -60,6 +61,7 @@ function CreateCar({ page, setCars, setTotalCarsCount }: Props) {
         onChange={e => setColor(e.target.value)}
       />
       <button
+        type="button"
         className="border border-red-300 pl-1.5 pr-1.5 rounded-xl hover:border-red-500 "
         onClick={createNewCar}
       >

@@ -21,7 +21,7 @@ function CarIcon({ mark, color, isDrive, engineState, isBroke }: Props) {
     }
     if (engineState === null) return;
     setSpeed(`${(engineState.distance / engineState.velocity).toFixed(2)}ms`);
-    setScreenSize(`${window.innerWidth - 180}px`);
+    setScreenSize(`${window.innerWidth - 200}px`);
   }, [engineState]);
 
   useEffect(() => {

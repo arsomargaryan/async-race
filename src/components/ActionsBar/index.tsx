@@ -10,7 +10,6 @@ interface Props {
   page: number;
   setTotalCarsCount: React.Dispatch<React.SetStateAction<number | null>>;
   updateId: number | null;
-  isRaceAll: boolean;
   setIsRaceAll: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -19,12 +18,11 @@ function ActionsBar({
   page,
   setTotalCarsCount,
   updateId,
-  isRaceAll,
   setIsRaceAll
 }: Props) {
   return (
     <div className="flex justify-between items-center">
-      <CarsRace isRaceAll={isRaceAll} setIsRaceAll={setIsRaceAll} />
+      <CarsRace setIsRaceAll={setIsRaceAll} />
       <CreateCar
         page={page}
         setCars={setCars}

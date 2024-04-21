@@ -3,12 +3,7 @@ import axios from 'axios';
 import { firstPartName, secondPartName } from '../../../constants/random-names';
 import { ICars } from '../../../interfaces/ICars';
 import { getCars } from '../../../api';
-
-interface Props {
-  page: number;
-  setCars: React.Dispatch<ICars[]>;
-  setTotalCarsCount: React.Dispatch<React.SetStateAction<number | null>>;
-}
+import Api from '../../../constants/api';
 
 const randomNumber = (): number => Math.floor(Math.random() * 10);
 
@@ -21,6 +16,11 @@ const randomColor = (): string => {
     .toString(16)
     .padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
 };
+interface Props {
+  page: number;
+  setCars: React.Dispatch<ICars[]>;
+  setTotalCarsCount: React.Dispatch<React.SetStateAction<number | null>>;
+}
 
 function GenerateCars({ page, setCars, setTotalCarsCount }: Props) {
   const carGenerate = () => {
@@ -31,7 +31,7 @@ function GenerateCars({ page, setCars, setTotalCarsCount }: Props) {
       try {
         axios
           .post(
-            'http://127.0.0.1:3000/garage/',
+            `${Api.HOST_URL}/garage/`,
             {
               name,
               color
@@ -42,11 +42,9 @@ function GenerateCars({ page, setCars, setTotalCarsCount }: Props) {
               }
             }
           )
-          .then(() => {
-            console.log('good');
-          });
-      } catch (error) {
-        console.log(error);
+          .then();
+      } catch {
+        /* empty */
       }
     }
     try {
@@ -55,14 +53,15 @@ function GenerateCars({ page, setCars, setTotalCarsCount }: Props) {
         setCars(data.data);
         setTotalCarsCount(data.headers['x-total-count']);
       });
-    } catch (error) {
-      console.log(error);
+    } catch {
+      /* empty */
     }
   };
 
   return (
     <div>
       <button
+        type="button"
         className="border border-green-300 pl-1.5 pr-1.5 rounded-xl hover:border-green-500 "
         onClick={carGenerate}
       >

@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import axios from 'axios';
 import { ICars } from '../../../interfaces/ICars';
 import { getCars } from '../../../api';
+import Api from '../../../constants/api';
 
 interface Props {
   setCars: React.Dispatch<ICars[]>;
@@ -14,19 +15,12 @@ function UpdateCar({ setCars, setTotalCarsCount, page, updateId }: Props) {
   const [name, setName] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const nameHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setName(e.target.value);
-  };
-  const colorHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setColor(e.target.value);
-  };
-
   const updateCar = (): void => {
     if (!name || inputRef.current === null) return;
     try {
       axios
         .put(
-          `http://127.0.0.1:3000/garage/${updateId}`,
+          `${Api.HOST_URL}/garage/${updateId}`,
           {
             name,
             color
@@ -46,8 +40,8 @@ function UpdateCar({ setCars, setTotalCarsCount, page, updateId }: Props) {
         });
       setName('');
       inputRef.current.value = '';
-    } catch (error) {
-      console.log(error);
+    } catch {
+      /* empty */
     }
   };
 
@@ -57,16 +51,17 @@ function UpdateCar({ setCars, setTotalCarsCount, page, updateId }: Props) {
         type="text"
         className="border w-28 rounded-xl p-1"
         placeholder="Type car name"
-        onChange={nameHandler}
+        onChange={e => setName(e.target.value)}
         ref={inputRef}
       />
       <input
         type="color"
         value={color}
         className="w-5"
-        onChange={colorHandler}
+        onChange={e => setColor(e.target.value)}
       />
       <button
+        type="button"
         className="border border-red-300 pl-1.5 pr-1.5 rounded-xl hover:border-red-500 "
         onClick={updateCar}
       >

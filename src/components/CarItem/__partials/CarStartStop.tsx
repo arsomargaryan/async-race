@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { IEngineStart } from '../../../interfaces/IEngineStart';
 import Globals from '../../../constants/globals';
+import Api from '../../../constants/api';
 
 interface Props {
   id: number;
@@ -35,13 +36,13 @@ function CarStartStop({
 
     try {
       axios
-        .patch(`http://127.0.0.1:3000/engine/?id=${id}&status=started`)
+        .patch(`${Api.HOST_URL}/engine/?id=${id}&status=started`)
         .then(response => {
           if (response.statusText === 'OK') {
             setEngineState(response.data);
             setIsDrive(true);
             axios
-              .patch(`http://127.0.0.1:3000/engine/?id=${id}&status=drive`)
+              .patch(`${Api.HOST_URL}/engine/?id=${id}&status=drive`)
               .then(data => {
                 if (data?.data.success === true) {
                   if (Globals.winnersModalAlreadyShown) return;
@@ -52,7 +53,9 @@ function CarStartStop({
                       name: carName,
                       time: Number(
                         (
-                          response.data.distance / response.data.velocity
+                          response.data.distance /
+                          response.data.velocity /
+                          1000
                         ).toFixed(2)
                       )
                     });
@@ -77,9 +80,7 @@ function CarStartStop({
     setIsBroke(false);
     setWinner(null);
     try {
-      axios
-        .patch(`http://127.0.0.1:3000/engine/?id=${id}&status=stopped`)
-        .then();
+      axios.patch(`${Api.HOST_URL}/engine/?id=${id}&status=stopped`).then();
     } catch {
       /* empty */
     }
@@ -103,6 +104,7 @@ function CarStartStop({
   return (
     <div className="flex flex-col">
       <button
+        type="button"
         className={`border-2 border-amber-400 text-amber-400 p-1 rounded-b text-xs ${isRace ? 'border-gray-500 text-gray-500' : 'hover:border-amber-500'}`}
         onClick={startFunc}
         disabled={isRace}
@@ -110,6 +112,7 @@ function CarStartStop({
         A
       </button>
       <button
+        type="button"
         className={`border-2 border-red-400 text-red-500 p-1 rounded-b text-xs mt-1 ${!isRace ? 'border-gray-500 text-gray-500' : 'hover:border-red-500'}`}
         onClick={stopFunc}
         disabled={!isRace}

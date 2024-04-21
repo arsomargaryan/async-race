@@ -21,7 +21,7 @@ function Header() {
         Winners
       </button>
 
-      <div className="absolute top-4 right-[30%] text-4xl p-4 flex flex-col">
+      <div className="absolute top-4 right-[30%] text-4xl p-4 flex flex-col shadow-inner shadow-fuchsia-600 rounded-2xl">
         <span>ASYNC</span>
         <span>RACE</span>
       </div>

@@ -36,7 +36,6 @@ function GaragePage({
         page={page}
         setTotalCarsCount={setTotalCarsCount}
         updateId={updateId}
-        isRaceAll={isRaceAll}
         setIsRaceAll={setIsRaceAll}
       />
       <CarsList

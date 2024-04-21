@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { ICars } from '../interfaces/ICars';
 import CarsList from '../components/CarsList';
-import Pagination from '../components/Pagination';
+import PaginationGarage from '../components/PaginationGarage';
+import ActionsBar from '../components/ActionsBar';
 
 interface Props {
   cars: ICars[];
-  setCars: React.Dispatch<ICars[]>;
-  setTotalCarsCount: React.Dispatch<React.SetStateAction<number | null>>;
-  setPage: React.Dispatch<React.SetStateAction<number>>;
+  setCars: Dispatch<ICars[]>;
+  setTotalCarsCount: Dispatch<SetStateAction<number | null>>;
+  setPage: Dispatch<SetStateAction<number>>;
   carCount: number | null;
   page: number;
-  setUpdateId: React.Dispatch<React.SetStateAction<number | null>>;
+  setUpdateId: Dispatch<SetStateAction<number | null>>;
   isRaceAll: boolean;
+  updateId: number | null;
+  setIsRaceAll: Dispatch<SetStateAction<boolean>>;
 }
 
 function GaragePage({
@@ -22,10 +25,20 @@ function GaragePage({
   page,
   setPage,
   setUpdateId,
-  isRaceAll
+  isRaceAll,
+  updateId,
+  setIsRaceAll
 }: Props) {
   return (
     <div>
+      <ActionsBar
+        setCars={setCars}
+        page={page}
+        setTotalCarsCount={setTotalCarsCount}
+        updateId={updateId}
+        isRaceAll={isRaceAll}
+        setIsRaceAll={setIsRaceAll}
+      />
       <CarsList
         cars={cars}
         setCars={setCars}
@@ -35,7 +48,7 @@ function GaragePage({
         isRaceAll={isRaceAll}
       />
       {carCount && (
-        <Pagination carCount={carCount} page={page} setPage={setPage} />
+        <PaginationGarage carCount={carCount} page={page} setPage={setPage} />
       )}
     </div>
   );

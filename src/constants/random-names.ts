@@ -2,10 +2,10 @@ const firstPartName: string[] = [
   'Tesla',
   'BMW',
   'Ford',
-  'Mersedes',
+  'Mercedes',
   'Toyota',
   'Kia',
-  'Hyndai',
+  'Hyundai',
   'Nissan',
   'Bugatti',
   'Lamborghini'

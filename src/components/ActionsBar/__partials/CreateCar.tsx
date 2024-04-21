@@ -14,15 +14,8 @@ function CreateCar({ page, setCars, setTotalCarsCount }: Props) {
   const [name, setName] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const nameHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setName(e.target.value);
-  };
-  const colorHandler = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setColor(e.target.value);
-  };
-
   const createNewCar = (): void => {
-    if (!name) return;
+    if (!name || inputRef.current === null) return;
     try {
       axios
         .post(
@@ -55,18 +48,23 @@ function CreateCar({ page, setCars, setTotalCarsCount }: Props) {
     <div className="flex gap-1">
       <input
         type="text"
-        className="border w-28"
+        className="border w-28 rounded-xl p-1"
         placeholder="Type car name"
-        onChange={nameHandler}
+        onChange={e => setName(e.target.value)}
         ref={inputRef}
       />
       <input
         type="color"
         value={color}
-        className="w-5"
-        onChange={colorHandler}
+        className="w-5 rounded-l"
+        onChange={e => setColor(e.target.value)}
       />
-      <button onClick={createNewCar}>Create</button>
+      <button
+        className="border border-red-300 pl-1.5 pr-1.5 rounded-xl hover:border-red-500 "
+        onClick={createNewCar}
+      >
+        Create
+      </button>
     </div>
   );
 }

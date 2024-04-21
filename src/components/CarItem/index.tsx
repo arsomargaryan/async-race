@@ -12,6 +12,13 @@ interface Props {
   page: number;
   setUpdateId: React.Dispatch<React.SetStateAction<number | null>>;
   isRaceAll: boolean;
+  setWinner: React.Dispatch<
+    React.SetStateAction<{
+      id: number;
+      time: number;
+      name: string;
+    } | null>
+  >;
 }
 function CarItem({
   car,
@@ -19,22 +26,15 @@ function CarItem({
   setTotalCarsCount,
   page,
   setUpdateId,
-  isRaceAll
+  isRaceAll,
+  setWinner
 }: Props) {
   const [engineState, setEngineState] = useState<IEngineStart | null>(null);
   const [isDrive, setIsDrive] = useState<boolean>(false);
   const [isBroke, setIsBroke] = useState<boolean>(false);
 
   return (
-    <div
-      className="flex gap-2 items-center m-2"
-      // style={{
-      //   display: 'flex',
-      //   gap: '2px',
-      //   alignItems: 'center',
-      //   margin: '5px'
-      // }}
-    >
+    <div className="flex gap-2 items-center m-2">
       <CarItemActions
         id={car.id}
         setCars={setCars}
@@ -44,10 +44,12 @@ function CarItem({
       />
       <CarStartStop
         id={car.id}
+        carName={car.name}
         setEngineState={setEngineState}
         setIsDrive={setIsDrive}
         setIsBroke={setIsBroke}
         isRaceAll={isRaceAll}
+        setWinner={setWinner}
       />
       <CarIcon
         mark={car.name}

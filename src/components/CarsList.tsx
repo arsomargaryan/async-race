@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import CarItem from './CarItem';
 import { ICars } from '../interfaces/ICars';
+import WinnerModal from './WinnerModal';
 
 interface Props {
   cars: ICars[];
@@ -18,8 +19,15 @@ function CarsList({
   setUpdateId,
   isRaceAll
 }: Props) {
+  const [winner, setWinner] = useState<{
+    id: number;
+    time: number;
+    name: string;
+  } | null>(null);
+
   return (
     <div>
+      {winner && <WinnerModal winner={winner} />}
       {cars.map(car => (
         <CarItem
           key={car.id}
@@ -29,6 +37,7 @@ function CarsList({
           page={page}
           setUpdateId={setUpdateId}
           isRaceAll={isRaceAll}
+          setWinner={setWinner}
         />
       ))}
     </div>

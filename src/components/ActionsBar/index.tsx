@@ -23,14 +23,7 @@ function ActionsBar({
   setIsRaceAll
 }: Props) {
   return (
-    <div
-      className="flex justify-between items-center"
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center'
-      }}
-    >
+    <div className="flex justify-between items-center">
       <CarsRace isRaceAll={isRaceAll} setIsRaceAll={setIsRaceAll} />
       <CreateCar
         page={page}

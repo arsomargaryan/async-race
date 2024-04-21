@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { ICars } from '../../../interfaces/ICars';
 import { getCars } from '../../../api';
@@ -36,14 +36,17 @@ function CarItemActions({
   };
 
   return (
-    <div
-      className="flex flex-col"
-      style={{ display: 'flex', flexDirection: 'column' }}
-    >
-      <button className="text-xs" onClick={selectCar}>
+    <div className="flex flex-col">
+      <button
+        className="border-2 border-emerald-400 hover:border-emerald-500 text-amber-400 p-1 rounded-b text-xs"
+        onClick={selectCar}
+      >
         Select
       </button>
-      <button className="text-xs" onClick={removeCar}>
+      <button
+        className="border-2 border-red-400 hover:border-red-500 text-red-500 p-1 rounded-b text-xs mt-1"
+        onClick={removeCar}
+      >
         Remove
       </button>
     </div>

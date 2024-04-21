@@ -5,23 +5,25 @@ function Header() {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-gray-400 " style={{ backgroundColor: 'gray' }}>
-      <div
-        className="flex flex-col gap-2 items-start m-10"
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '2px',
-          alignItems: 'start',
-          margin: '40px'
-        }}
+    <div className="flex flex-col gap-2 items-start m-5 mb-14 relative">
+      <button
+        type="button"
+        className="border-2 border-amber-400 hover:border-amber-500 hover:font-bold p-2 w-24 rounded-xl"
+        onClick={() => navigate('/')}
       >
-        <button type="button" onClick={() => navigate('/')}>
-          Garage
-        </button>
-        <button type="button" onClick={() => navigate('/winners')}>
-          Winners
-        </button>
+        Garage
+      </button>
+      <button
+        type="button"
+        className="border-2 border-amber-400 hover:border-amber-500 hover:font-bold p-2 w-24 rounded-xl"
+        onClick={() => navigate('/winners')}
+      >
+        Winners
+      </button>
+
+      <div className="absolute top-4 right-[30%] text-4xl p-4 flex flex-col">
+        <span>ASYNC</span>
+        <span>RACE</span>
       </div>
     </div>
   );

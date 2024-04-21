@@ -6,7 +6,7 @@ interface Props {
   setPage: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function Pagination({ carCount, page, setPage }: Props) {
+function PaginationGarage({ carCount, page, setPage }: Props) {
   const [pageCount, setPageCount] = useState<number>(Math.ceil(carCount / 7));
 
   useEffect(() => {
@@ -24,24 +24,17 @@ function Pagination({ carCount, page, setPage }: Props) {
   };
 
   return (
-    <div
-      className="flex justify-between m-10"
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        margin: '10px'
-      }}
-    >
-      <div>Garage ({carCount})</div>
+    <div className="flex justify-between m-10 text-xl">
+      <div className="shadow-2xl">Garage ({carCount})</div>
       <div>
         <i
-          className="fa-solid fa-arrow-left cursor-pointer"
+          className="fa-solid fa-arrow-left cursor-pointer mr-1"
           style={{ cursor: 'pointer' }}
           onClick={prevPage}
         />
         Page {page}
         <i
-          className="fa-solid fa-arrow-right cursor-pointer"
+          className="fa-solid fa-arrow-right cursor-pointer ml-1"
           style={{ cursor: 'pointer' }}
           onClick={nextPage}
         />
@@ -50,4 +43,4 @@ function Pagination({ carCount, page, setPage }: Props) {
   );
 }
 
-export default Pagination;
+export default PaginationGarage;

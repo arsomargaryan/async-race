@@ -12,9 +12,15 @@ function CarIcon({ mark, color, isDrive, engineState, isBroke }: Props) {
   const [speed, setSpeed] = useState<string>('');
   const [screenSize, setScreenSize] = useState<string>('');
   const carRef = useRef<HTMLElement>(null);
+  const skipFirstEffect = useRef<boolean>(true);
 
   useEffect(() => {
-    setSpeed(`${(engineState?.distance / engineState?.velocity).toFixed(2)}ms`);
+    if (skipFirstEffect.current) {
+      skipFirstEffect.current = false;
+      return;
+    }
+    if (engineState === null) return;
+    setSpeed(`${(engineState.distance / engineState.velocity).toFixed(2)}ms`);
     setScreenSize(`${window.innerWidth - 180}px`);
   }, [engineState]);
 
@@ -30,7 +36,6 @@ function CarIcon({ mark, color, isDrive, engineState, isBroke }: Props) {
         style={
           {
             color,
-            fontSize: '30px',
             '--animation-duration': speed,
             '--screen-size': screenSize
           } as CSSProperties

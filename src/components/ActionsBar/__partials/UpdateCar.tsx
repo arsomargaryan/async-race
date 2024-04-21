@@ -22,7 +22,7 @@ function UpdateCar({ setCars, setTotalCarsCount, page, updateId }: Props) {
   };
 
   const updateCar = (): void => {
-    if (!name) return;
+    if (!name || inputRef.current === null) return;
     try {
       axios
         .put(
@@ -55,7 +55,7 @@ function UpdateCar({ setCars, setTotalCarsCount, page, updateId }: Props) {
     <div className="flex gap-1">
       <input
         type="text"
-        className="border w-28"
+        className="border w-28 rounded-xl p-1"
         placeholder="Type car name"
         onChange={nameHandler}
         ref={inputRef}
@@ -66,7 +66,12 @@ function UpdateCar({ setCars, setTotalCarsCount, page, updateId }: Props) {
         className="w-5"
         onChange={colorHandler}
       />
-      <button onClick={updateCar}>Update</button>
+      <button
+        className="border border-red-300 pl-1.5 pr-1.5 rounded-xl hover:border-red-500 "
+        onClick={updateCar}
+      >
+        Update
+      </button>
     </div>
   );
 }

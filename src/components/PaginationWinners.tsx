@@ -25,22 +25,25 @@ function PaginationWinners({ totalWinnersCount, page, setPage }: Props) {
   };
 
   return (
-    <div>
-      <button type="button" onClick={prevPage}>
-        <i
-          aria-label="arrow-left"
-          className="fa-solid fa-arrow-left cursor-pointer mr-1"
-          style={{ cursor: 'pointer' }}
-        />
-      </button>
-      Page {page}
-      <button type="button" onClick={nextPage}>
-        <i
-          aria-label="arrow-right"
-          className="fa-solid fa-arrow-right cursor-pointer ml-1"
-          style={{ cursor: 'pointer' }}
-        />
-      </button>
+    <div className="flex justify-between m-10 text-xl">
+      <div className="shadow-2xl">Winners ({totalWinnersCount})</div>
+      <div>
+        <button type="button" onClick={prevPage}>
+          <i
+            aria-label="arrow-left"
+            className="fa-solid fa-arrow-left cursor-pointer mr-1"
+            style={{ cursor: 'pointer' }}
+          />
+        </button>
+        Page {page}
+        <button type="button" onClick={nextPage}>
+          <i
+            aria-label="arrow-right"
+            className="fa-solid fa-arrow-right cursor-pointer ml-1"
+            style={{ cursor: 'pointer' }}
+          />
+        </button>
+      </div>
     </div>
   );
 }

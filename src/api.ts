@@ -7,6 +7,6 @@ export async function getCars(page: number) {
 
 export async function getWinners(page: number, sort?: string, order?: string) {
   return axios.get(
-    `${Api.HOST_URL}/winners?_limit=7&_page=${page}&_sort=${sort}&_order=${order}`
+    `${Api.HOST_URL}/winners?_limit=10&_page=${page}&_sort=${sort}&_order=${order}`
   );
 }

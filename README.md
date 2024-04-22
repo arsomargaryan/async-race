@@ -1,4 +1,4 @@
-> Calculated total score: 390
+> Calculated total score: 360
 > 
 > https://async-race-sable.vercel.app/#/
 
@@ -93,4 +93,4 @@
 
 ## 🌟 Overall Code Quality (35 points)
 
-- [x] **(Up to 35 points)** Discretionary points awarded by the reviewer based on overall code quality, readability
+- [ ] **(Up to 35 points)** Discretionary points awarded by the reviewer based on overall code quality, readability

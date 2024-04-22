@@ -32,7 +32,7 @@ function CarIcon({ mark, color, isDrive, engineState, isBroke }: Props) {
   return (
     <>
       <i
-        className={`fa-solid fa-car-side text-4xl ${isDrive ? 'carAnimation' : ''}`}
+        className={`fa-solid fa-car-side text-4xl mr-6 ${isDrive ? 'carAnimation' : ''}`}
         style={
           {
             color,

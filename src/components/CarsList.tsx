@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import CarItem from './CarItem';
 import { ICars } from '../interfaces/ICars';
 import WinnerModal from './WinnerModal';
+import StartLine from './StartLine';
+import FinishLine from './FinishLine';
 
 interface Props {
   cars: ICars[];
@@ -26,7 +28,7 @@ function CarsList({
   } | null>(null);
 
   return (
-    <div>
+    <div className="relative">
       {winner && <WinnerModal winner={winner} />}
       {cars.map(car => (
         <CarItem
@@ -40,6 +42,8 @@ function CarsList({
           setWinner={setWinner}
         />
       ))}
+      <StartLine />
+      <FinishLine />
     </div>
   );
 }

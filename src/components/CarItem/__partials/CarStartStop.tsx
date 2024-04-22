@@ -97,9 +97,10 @@ function CarStartStop({
     } else {
       Globals.hasRaceStarted = false;
       Globals.winnersModalAlreadyShown = false;
+      setWinner(null);
       stopFunc();
     }
-  }, [isRaceAll, startFunc, stopFunc]);
+  }, [isRaceAll, setWinner, startFunc, stopFunc]);
 
   return (
     <div className="flex flex-col">
